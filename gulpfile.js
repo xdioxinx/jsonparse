@@ -1,26 +1,21 @@
 var gulp = require( 'gulp' );
-var connect = require( 'gulp-connect' );
-
-var paths = [
-  './*.md',
-  'src/**/*.html',
-  'src/**/*.js'
-];
+var connect = require('gulp-connect');
 
 gulp.task( 'connect', function() {
+
 	connect.server({
 		root: 'src',
 		livereload: true
 	});
 });
 
-gulp.task( 'watch', function() {
-	gulp.watch( paths, [ 'reload' ] );
+gulp.task( 'html', function() {
+	gulp.src( './src/**/*.html' )
+	.pipe( connect.reload() );
 });
 
-gulp.task( 'reload', function() {
-	gulp.src( paths )
-	.pipe( connect.reload() );
+gulp.task( 'watch', function() {
+	gulp.watch( [ './src/**/*.html' ], [ 'html' ] );
 });
 
 gulp.task( 'default', [

@@ -8,8 +8,8 @@
       cache: false,
       dataType: 'jsonp',
       success: function(data) {
-        for (var i = 0; i < data.responseData.feed.entries.length; i++) {
-          console.log(data.responseData.feed.entries);
+        for (var i = 0; i < data.responseData.feed.entries.length; i++ ) {
+          console.log(data.responseData.feed.entries[i].title);
         }
       }
     });
